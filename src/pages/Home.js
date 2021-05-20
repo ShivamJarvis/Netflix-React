@@ -1,16 +1,41 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from 'react-router-dom'
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { Link,Redirect } from "react-router-dom";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 const Home = () => {
+  document.body.style.backgroundColor = "#222222";
+  const [email, setEmail] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [isAllSet,setIsAllSet] = React.useState(false)
+  const handleSignup = (event) => {
+    event.preventDefault();
+    if(email===''){
+      setOpen(true);
+      return 
+    }
+    setIsAllSet(true)
+  };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <>
+    {isAllSet && <Redirect to="/signup/register"></Redirect>}
       <Container>
         <NavWrap>
           <Logo
             src="/Assets/images/main-site-logo.png"
             alt="netflix-logo"
           ></Logo>
-          <Link className="go-to-login" to="/login">Sign In</Link>
+          <Link className="go-to-login" to="/login">
+            Sign In
+          </Link>
         </NavWrap>
 
         <Header>
@@ -20,9 +45,16 @@ const Home = () => {
             Ready to watch? Enter your email to create or restart your
             membership.
           </h3>
-          <Form>
-            <Input type="email" placeholder="Email"></Input>
-            <SubmitButton>{"Get Started >"}</SubmitButton>
+          <Form onSubmit={handleSignup}>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></Input>
+            <SubmitButton type="submit">
+              Get Started <ArrowForwardIosIcon />
+            </SubmitButton>
           </Form>
         </Header>
       </Container>
@@ -67,6 +99,11 @@ const Home = () => {
           <img src="/Assets/images/children.png" alt="for-childrens"></img>
         </div>
       </HeroContent3>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          Please enter your email address.
+        </Alert>
+      </Snackbar>
     </>
   );
 };
@@ -105,11 +142,11 @@ const NavWrap = styled.div`
   height: 5rem;
   align-items: center;
   padding-top: 20px;
-  .go-to-login{
+  .go-to-login {
     background-color: #e50914;
     line-height: normal;
     padding: 7px 17px;
-    text-decoration:none;
+    text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
     color: white;
@@ -127,8 +164,6 @@ const Logo = styled.img`
   left: 0;
   cursor: pointer;
 `;
-
-
 
 const Header = styled.div`
     display:flex;
@@ -203,7 +238,8 @@ const Input = styled.input`
   height: 100%;
   width: 100%;
   font-size: 1.6rem;
-  padding: 0.5rem;
+  height:70px;
+  padding:0.5rem;
   @media (max-width: 600px) {
     font-size: 1.3rem;
     width: 120%;
@@ -218,6 +254,9 @@ const SubmitButton = styled.button`
   border: none;
   padding: 0.5rem 0.3rem;
   font-size: 1.8rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   @media (max-width: 800px) {
     margin-top: 1rem;
   }
