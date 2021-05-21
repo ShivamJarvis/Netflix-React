@@ -31,7 +31,7 @@ const ChoosePlan = () => {
     document.getElementById(selectedPlan + "3").style.color = "#e50914";
   }, []);
   const selectPlan = (planName) => {
-    console.log(planName);
+
 
     if (selectedPlan !== "") {
       document.getElementById(selectedPlan).style.color = "#000000";
@@ -192,8 +192,8 @@ const ChoosePlan = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Link className="continue-button" to="/signup/regform">
-          Continue
+        <Link className="continue-button" to="/welcome" onClick={()=>alert('This is development version so no any payment gateway enjoy free videos.')}>
+          Continu
         </Link>
       </WrapSection>
     </>
@@ -278,9 +278,7 @@ const WrapSection = styled.div`
     @media (max-width: 900px) {
       margin-top: 80px;
     }
-    @media (max-width: 430px) {
-      //   margin-top: 100px;
-    }
+    
   }
   h3 {
     font-size: 23px;
@@ -304,18 +302,22 @@ const WrapSection = styled.div`
     background-color: #e50914;
     line-height: normal;
     width: 50%;
-    padding: 15px 17px;
+    padding: 20px 17px;
     margin-top: 20px;
     transform: translateX(50%);
 
     text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: white;
     border: none;
     text-align: center;
     cursor: pointer;
     margin-bottom: 20px;
+    &:after{
+      content:"e";
+      padding-bottom:80px;
+    }
   }
 `;
 

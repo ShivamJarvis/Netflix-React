@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import SignUpStep1 from "./pages/SignUpStep1";
 import SignUpStep2 from "./pages/SignUpStep2";
 import SignUpRegistration from "./pages/SignUpRegistration";
+import ChooseAccount from "./pages/ChooseAccount";
 import ChoosePlan from "./pages/ChoosePlan";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const App = () => {
@@ -27,6 +28,9 @@ const App = () => {
           </Route>
           <Route path="/signup/planform" exact>
             <ChoosePlan></ChoosePlan>
+          </Route>
+          <Route path="/welcome" exact>
+            <ChooseAccount></ChooseAccount>
           </Route>
           <Route path="*" >
             <h1>This page is not found</h1>

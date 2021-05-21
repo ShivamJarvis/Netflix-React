@@ -4,7 +4,9 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link,Redirect } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import {useApi} from './../context/ApiContext'
 const Home = () => {
+  const {setSignUpEmail} = useApi();
   document.body.style.backgroundColor = "#222222";
   const [email, setEmail] = React.useState("");
   const [open, setOpen] = React.useState(false);
@@ -15,6 +17,7 @@ const Home = () => {
       setOpen(true);
       return 
     }
+    setSignUpEmail(email)
     setIsAllSet(true)
   };
   const handleClose = (event, reason) => {
@@ -256,6 +259,7 @@ const SubmitButton = styled.button`
   font-size: 1.8rem;
   display:flex;
   align-items:center;
+  cursor:pointer;
   justify-content:center;
   @media (max-width: 800px) {
     margin-top: 1rem;

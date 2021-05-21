@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 const SignUpStep1 = () => {
   document.body.style.backgroundColor = "#ffffff";
   return (
@@ -26,7 +27,9 @@ const SignUpStep1 = () => {
           Netflix is personalised for you. Create a password to watch Netflix on
           any device at any time.
         </h4>
-        <Link className="continue-button" to="/signup/regform">Continue</Link>
+        <Link className="continue-button" to="/signup/regform">
+          Continue
+        </Link>
       </RegisterSection>
     </>
   );
@@ -99,9 +102,9 @@ const RegisterSection = styled.div`
     margin-top: 160px;
     width: 350px;
     @media (max-width: 430px) {
-        width: 85%;
-        margin-top:180px;
-      }
+      width: 85%;
+      margin-top: 180px;
+    }
   }
   h5 {
     font-weight: 500;
@@ -127,7 +130,7 @@ const RegisterSection = styled.div`
     margin-top: -10px;
     color: #333333;
   }
-  .continue-button{
+  .continue-button {
     background-color: #e50914;
     line-height: normal;
     width: 100%;
@@ -137,8 +140,7 @@ const RegisterSection = styled.div`
     font-size: 1rem;
     color: white;
     border: none;
-    text-align:center;
+    text-align: center;
     cursor: pointer;
   }
 `;
-

@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { Link,Redirect } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import {useApi} from './../context/ApiContext'
 const SignUpRegistration = () => {
   document.body.style.backgroundColor = "#ffffff";
+  const {signUpEmail} = useApi();
   const [open, setOpen] = React.useState(false);
   const [errorMsg,setErrorMsg] = React.useState('')
   const [isAllSet,setIsAllSet] = React.useState(false)
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = React.useState(signUpEmail);
   const [password, setPassword] = React.useState("");
   
   const handleSetPassword = (e) => {

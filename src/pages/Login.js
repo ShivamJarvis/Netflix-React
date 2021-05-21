@@ -2,7 +2,40 @@ import React from "react";
 import styled from "styled-components";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import {Link} from 'react-router-dom'
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 const Login = () => {
+  const [email,setEmail] = React.useState("")
+  const [open, setOpen] = React.useState(false);
+  const [message,setMessage] = React.useState("Something went wrong!");
+  const [password,setPassword] = React.useState("")
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if(email===''){
+      setMessage("Please enter valid email!");
+      setOpen(true)
+      return
+    }
+    if(password===''){
+      setMessage("Please enter valid password!");
+      setOpen(true)
+      return
+    }
+    if(password.length<6){
+      setMessage("Password length not less than 6 characters !");
+      setOpen(true)
+      return
+    }
+
+    alert('This is sign in handler')
+  }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <>
       <Container>
@@ -14,10 +47,10 @@ const Login = () => {
         </NavWrap>
         <SignSection>
           <h1>Sign In</h1>
-          <Form>
-            <Input type="email" placeholder="Email"></Input>
+          <Form onSubmit={handleLogin}>
+            <Input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}></Input>
             <br />
-            <Input type="password" placeholder="Password"></Input>
+            <Input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}></Input>
             <br />
             <SubmitButton type="submit">Sign In</SubmitButton>
             <br />
@@ -48,6 +81,11 @@ const Login = () => {
           </Form>
         </SignSection>
       </Container>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          {message}
+        </Alert>
+      </Snackbar>
     </>
   );
 };
