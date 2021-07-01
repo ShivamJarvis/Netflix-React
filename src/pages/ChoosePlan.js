@@ -21,7 +21,7 @@ const ChoosePlan = () => {
   };
   React.useEffect(() => {
     document.getElementById(selectedPlan).style.color = "#fff";
-    document.getElementById(selectedPlan).classList.add('selectedbox');
+    document.getElementById(selectedPlan).classList.add("selectedbox");
     document.getElementById(selectedPlan).style.backgroundColor = "#e50914";
 
     document.getElementById(selectedPlan).style.borderColor = "#e50914";
@@ -31,8 +31,6 @@ const ChoosePlan = () => {
     document.getElementById(selectedPlan + "3").style.color = "#e50914";
   }, []);
   const selectPlan = (planName) => {
-
-
     if (selectedPlan !== "") {
       document.getElementById(selectedPlan).style.color = "#000000";
       document.getElementById(selectedPlan).style.backgroundColor = "#fff";
@@ -41,11 +39,9 @@ const ChoosePlan = () => {
       document.getElementById(selectedPlan + "1").style.color = "#000000";
       document.getElementById(selectedPlan + "2").style.color = "#000000";
       document.getElementById(selectedPlan + "3").style.color = "#000000";
-      document.getElementById(selectedPlan).classList.remove('selectedbox');
-
-      
+      document.getElementById(selectedPlan).classList.remove("selectedbox");
     }
-    document.getElementById(planName).classList.add('selectedbox');
+    document.getElementById(planName).classList.add("selectedbox");
 
     document.getElementById(planName).style.color = "#fff";
     document.getElementById(planName + "0").style.color = "#e50914";
@@ -87,15 +83,20 @@ const ChoosePlan = () => {
         <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2>
       </Devices>,
       <Devices>
-        <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2> <ComputerIcon /> <h2>Computer</h2> <TvIcon /><h2>TV</h2>
+        <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2>{" "}
+        <ComputerIcon /> <h2>Computer</h2> <TvIcon />
+        <h2>TV</h2>
       </Devices>,
       <Devices>
-        <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2> <ComputerIcon /> <h2>Computer</h2> <TvIcon /><h2>TV</h2>
+        <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2>{" "}
+        <ComputerIcon /> <h2>Computer</h2> <TvIcon />
+        <h2>TV</h2>
       </Devices>,
       <Devices>
-        <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2> <ComputerIcon /> <h2>Computer</h2> <TvIcon /><h2>TV</h2>
+        <PhoneAndroidIcon /> <h2>Phone</h2> <TabletIcon /> <h2>Tablet</h2>{" "}
+        <ComputerIcon /> <h2>Computer</h2> <TvIcon />
+        <h2>TV</h2>
       </Devices>
-     
     ),
   ];
   // At this stage user must be logined or regiestered
@@ -147,7 +148,7 @@ const ChoosePlan = () => {
                   </SelectionBox>
                 </TableCell>
                 <TableCell align="center">
-                  <SelectionBox onClick={() => selectPlan("Basic")} id="Basic" >
+                  <SelectionBox onClick={() => selectPlan("Basic")} id="Basic">
                     Basic
                   </SelectionBox>
                 </TableCell>
@@ -192,7 +193,15 @@ const ChoosePlan = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Link className="continue-button" to="/welcome" onClick={()=>alert('This is development version so no any payment gateway enjoy free videos.')}>
+        <Link
+          className="continue-button"
+          to="/welcome"
+          onClick={() =>
+            alert(
+              "This is development version so no any payment gateway enjoy free videos."
+            )
+          }
+        >
           Continu
         </Link>
       </WrapSection>
@@ -204,7 +213,6 @@ export default ChoosePlan;
 
 const Container = styled.div`
   width: 100%;
-  
 `;
 
 const NavWrap = styled.div`
@@ -278,7 +286,6 @@ const WrapSection = styled.div`
     @media (max-width: 900px) {
       margin-top: 80px;
     }
-    
   }
   h3 {
     font-size: 23px;
@@ -314,9 +321,9 @@ const WrapSection = styled.div`
     text-align: center;
     cursor: pointer;
     margin-bottom: 20px;
-    &:after{
-      content:"e";
-      padding-bottom:80px;
+    &:after {
+      content: "e";
+      padding-bottom: 80px;
     }
   }
 `;
@@ -335,7 +342,6 @@ const Devices = styled.div`
   align-items: center;
   svg {
     margin: 2px 0;
-    
   }
 `;
 const SelectionBox = styled.div`
@@ -346,5 +352,4 @@ const SelectionBox = styled.div`
   font-size: 18px;
   font-weight: 600;
   user-select: none;
-  }
 `;

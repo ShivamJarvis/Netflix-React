@@ -1,27 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import { Link,Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
-import {useApi} from './../context/ApiContext'
+import { useApi } from "./../context/ApiContext";
 const Home = () => {
-  const {setSignUpEmail} = useApi();
+  const { setSignUpEmail } = useApi();
   document.body.style.backgroundColor = "#222222";
   const [email, setEmail] = React.useState("");
   const [open, setOpen] = React.useState(false);
-  const [isAllSet,setIsAllSet] = React.useState(false)
+  const [isAllSet, setIsAllSet] = React.useState(false);
   const handleSignup = (event) => {
     event.preventDefault();
-    if(email===''){
+    if (email === "") {
       setOpen(true);
-      return 
+      return;
     }
-    setSignUpEmail(email)
-    setIsAllSet(true)
+    setSignUpEmail(email);
+    setIsAllSet(true);
   };
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -29,7 +29,7 @@ const Home = () => {
   };
   return (
     <>
-    {isAllSet && <Redirect to="/signup/register"></Redirect>}
+      {isAllSet && <Redirect to="/signup/register"></Redirect>}
       <Container>
         <NavWrap>
           <Logo
@@ -71,14 +71,26 @@ const Home = () => {
           </h3>
         </div>
         <div>
-          <video autoPlay={true} playsInline={true} loop={true} muted>
+          <video
+            autoPlay={true}
+            playsInline={true}
+            loop={true}
+            muted
+            style={{ pointerEvent: "none" }}
+          >
             <source src="/Assets/images/tv.mp4"></source>
           </video>
         </div>
       </HeroContent1>
       <HeroContent2>
         <div>
-          <video autoPlay={true} playsInline={true} loop={true} muted>
+          <video
+            autoPlay={true}
+            playsInline={true}
+            loop={true}
+            muted
+            style={{ pointerEvent: "none" }}
+          >
             <source src="/Assets/images/video-in.mp4"></source>
           </video>
         </div>
@@ -169,60 +181,58 @@ const Logo = styled.img`
 `;
 
 const Header = styled.div`
-    display:flex;
-    width:50%;
-    position:absolute;
-    left:25%;
-    top:25%;
+  display: flex;
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  @media (max-width: 600px) {
+    left: 15%;
+    width: 70%;
+  }
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 4rem;
+    @media (max-width: 800px) {
+      font-size: 2rem;
+    }
+    @media (max-width: 1100px) {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 500px) {
+      font-size: 1.6rem;
+    }
+  }
+  h2 {
+    text-align: center;
+    color: white;
+    margin: -20px;
+    font-size: 1.625rem;
+    @media (max-width: 800px) {
+      font-size: 1.3rem;
+    }
+    @media (max-width: 500px) {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+  }
+  h3 {
+    text-align: center;
+    color: white;
+    padding-top: 30px;
+    font-size: 1.2rem;
     @media (max-width: 600px) {
-      left:15%;
-      width:70%;
+      font-size: 1rem;
     }
-    flex-direction:column;
-    align-items:center;
-    justify:content:center;
-    h1{
-        text-align:center;
-        color:white;
-        font-size:4rem;
-        @media (max-width: 800px) {
-          font-size:2rem;
-        }
-        @media (max-width: 1100px) {
-          font-size: 2.5rem;
-          margin-bottom:2rem;
-        }
-        @media (max-width: 500px) {
-          font-size: 1.6rem;
-        }
+    @media (max-width: 360px) {
+      font-size: 0.9rem;
     }
-    h2{
-        text-align:center;
-        color:white;
-        margin:-20px;
-        font-size: 1.625rem;
-        @media (max-width: 800px) {
-          font-size:1.3rem;
-        
-        }
-        @media (max-width: 500px) {
-          font-size: 1.1rem;
-          margin-top:1rem;
-        }
-    }
-    h3{
-        text-align:center;
-        color:white;
-        padding-top:30px;
-        font-size: 1.2rem;
-        @media (max-width: 600px) {
-          font-size: 1rem;
-         
-        }
-        @media (max-width: 360px) {
-          font-size: 0.9rem;
-        }
-    }
+  }
 `;
 
 const Form = styled.form`
@@ -241,8 +251,8 @@ const Input = styled.input`
   height: 100%;
   width: 100%;
   font-size: 1.6rem;
-  height:70px;
-  padding:0.5rem;
+  height: 70px;
+  padding: 0.5rem;
   @media (max-width: 600px) {
     font-size: 1.3rem;
     width: 120%;
@@ -257,10 +267,10 @@ const SubmitButton = styled.button`
   border: none;
   padding: 0.5rem 0.3rem;
   font-size: 1.8rem;
-  display:flex;
-  align-items:center;
-  cursor:pointer;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
   @media (max-width: 800px) {
     margin-top: 1rem;
   }
