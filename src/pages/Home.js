@@ -76,7 +76,7 @@ const Home = () => {
             playsInline={true}
             loop={true}
             muted
-            style={{ pointerEvent: "none" }}
+            style={{ pointerEvents: "none" }}
           >
             <source src="/Assets/images/tv.mp4"></source>
           </video>
@@ -89,7 +89,7 @@ const Home = () => {
             playsInline={true}
             loop={true}
             muted
-            style={{ pointerEvent: "none" }}
+            style={{ pointerEvents: "none" }}
           >
             <source src="/Assets/images/video-in.mp4"></source>
           </video>
